@@ -1,0 +1,86 @@
+Doc Octopus v0.2.0.2
+* New OCR for detection of troops on donation Window
+* New OCR for Big Number on Attack Bar
+* New OCR for the Request Capacity | Troops and Spells
+* Fix train Valks click @mikemikemikecoc
+* Fix Full Barracks detection
+* Fix Scroll Clan Chat @MMHK
+* Add Button to test de Donation System detection troops
+( open clan chat, click on donation and click on that button to test the troops detection )
+* Add the calculate wait time by army strength full camp set on GUI
+
+Doc Octopus v0.2.0.1
+* Reverted the Dark Custom Train Troops , nothing was changed in last SC Update
+
+Doc Octopus v0.2
+* Fix Train Barracks Mode ( ZengZeng FIX)
+* Fix Train Custom Troops
+* Fix Normal & Dark Spells Train ( mikemikemikecoc FIX)
+* Fix Open/close Chat Tab
+* Fix Request clan troops
+* Fix Donate Clan Troops ( i didn't test all troops , Barbs/Archs/giants are OK )
+* All previous fixes are for May SC Update
+* New GUI for the Doc Oc Tab ( preparation for v0.2.1)
+
+Doc Octopus v0.1.9.1
+* Fix the ZoomOut issue on BS & BS2
+
+Doc Octopus v0.1.9
+* Change the extension file name on Emulator, used more common extensions related to "pictures"
+
+* Changed some code on CoC close or not randomly.
+
+* Removed some additional software ( all .apk files)
+
+Doc Octopus v0.1.8
+
+* Forgotten file runningBots.au3
+
+Doc Octopus v0.1.7
+* new code to android : rearrange the files and folders
+* Changed the Priority of Emulator : MEmu is the first
+* Changed some folders and files names inside the Emulator
+* Fix infinite loop, will only check for sleep if the stop button has not been pressed
+* Remove the previous created folder & files before create the new PID file name...
+* Allow the bot to either close COC when waiting for training, or to let it timeout naturally.
+* Sleep period and max daily attacks will always force close.
+* Modified ADB files, stores as pID, deletes any files for bots no longer running on start for non clean exits, deletes its own files on clean exit.
+
+Doc Octopus v0.1.6
+* Minor fixes, make sure variables are stored as numbers, and DocOc UI fix.
+* Fix Idle to ensure that only stops attacks if limit attacks is enabled
+
+Doc Octopus v0.1.5
+* Fix the problem with Random Halt Attack after the sleep Mode .
+
+Doc Octopus v0.1.4
+* Fix the "s" on Army over View remaining timer OCR
+
+Doc Octopus v0.1.3
+* UI TAB option for Sleep , Train close and max attack daily
+* Queued main Function randomly
+* Hardcoded Redline attacks to always on
+* Update iCollectCounter to 11 so it always empties first loop after start up
+* Add max attacks per day to limit attacks to stop being banned for too many attacks
+* Fixed Giants click ( but is necessary make a new click positions on all troops )
+
+ @LunaEclipse, thks mate
+
+Doc Octopus v0.1.2
+* Based on MBR 5.3.2 Official Release.
+* Removed obsolete code and images.
+* Delay times on collect resources and random click position.
+* Delay times on Train troops.
+* Random position click on Donate Button and tab.
+* Random position click Attack button and Next search village.
+* Removed the collect resource by extractors/mines positions only use the "drop" search.
+* Bot will close the CoC game after queue troop for the remain training time ( with a random additional 10~20 minutes).
+* Add more delay possibilities on deploying troops speed.
+* Add the Halt Random attack : will run the bot for 3~6 hours and close the CoC game for 40 min to 2 Hours.
+* Random position clicks was made based on ClickZone (boju's code).
+* Option to close the Game during the night ( sleep time, random from 00~01 to 08~09 am )
+* Changed some default values on GUI
+* Random click position on making troops
+* Random Queue Troops order [ 3 different sets , i will add more ]
+* Random some Main and Idle routines
+
