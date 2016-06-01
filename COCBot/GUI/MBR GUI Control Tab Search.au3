@@ -69,16 +69,16 @@ Func cmbSearchMode()
 			For $i = $chkDBEnableAfter To $lblDBEnableAfter
 				GUICtrlSetState($i, $GUI_SHOW)
 			Next
-			For $i = $cmbABMeetGE To $chkABMeetOne
-				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
-				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
-				GUICtrlSetState($i, $GUI_ENABLE)
-			Next
-			For $i = $cmbDBMeetGE To $chkDBMeetOne
-				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
-				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
-				GUICtrlSetState($i, $GUI_ENABLE)
-			Next
+;			For $i = $cmbABMeetGE To $chkABMeetOne
+;				If $i = $cmbABTH And GUICtrlRead($chkABMeetTH) = $GUI_UNCHECKED Then $i += 1
+;				If ($i = $cmbABWeakMortar Or $i = $cmbABWeakWizTower) And GUICtrlRead($chkABWeakBase) = $GUI_UNCHECKED Then $i += 1
+;				GUICtrlSetState($i, $GUI_ENABLE)
+;			Next
+;			For $i = $cmbDBMeetGE To $chkDBMeetOne
+;				If $i = $cmbDBTH And GUICtrlRead($chkDBMeetTH) = $GUI_UNCHECKED Then $i += 1
+;				If ($i = $cmbDBWeakMortar Or $i = $cmbDBWeakWizTower) And GUICtrlRead($chkDBWeakBase) = $GUI_UNCHECKED Then $i += 1
+;				GUICtrlSetState($i, $GUI_ENABLE)
+;			Next
 	EndSwitch
 EndFunc   ;==>cmbSearchMode
 
@@ -138,6 +138,16 @@ Func chkDBMeetTH()
 	EndIf
 EndFunc   ;==>chkDBMeetTH
 
+;TH Redux -n3vermind
+Func chkDBMeetTHLow()
+	If GUICtrlRead($chkDBMeetTHLow) = $GUI_CHECKED Then
+		If _GUICtrlComboBox_GetCurSel($cmbSearchMode) <> 1 Then GUICtrlSetState($cmbDBTHLow, $GUI_ENABLE)
+		_GUICtrlEdit_SetReadOnly($txtDBMinDarkElixirLow, False)
+	Else
+		GUICtrlSetState($cmbDBTHLow, $GUI_DISABLE)
+		_GUICtrlEdit_SetReadOnly($txtDBMinDarkElixirLow, True)
+	EndIf
+EndFunc   ;==>chkDBMeetTHLow
 Func chkDBWeakBase()
 	If GUICtrlRead($chkDBWeakBase) = $GUI_CHECKED Then
 		If _GUICtrlComboBox_GetCurSel($cmbSearchMode) <> 1 Then
@@ -206,6 +216,16 @@ Func chkABMeetTH()
 	EndIf
 EndFunc   ;==>chkABMeetTH
 
+;TH Redux -n3vermind
+Func chkABMeetTHLow()
+	If GUICtrlRead($chkABMeetTHLow) = $GUI_CHECKED Then
+		If _GUICtrlComboBox_GetCurSel($cmbSearchMode) <> 1 Then GUICtrlSetState($cmbABTHLow, $GUI_ENABLE)
+		_GUICtrlEdit_SetReadOnly($txtABMinDarkElixirLow, False)
+	Else
+		GUICtrlSetState($cmbDBTHLow, $GUI_DISABLE)
+		_GUICtrlEdit_SetReadOnly($txtABMinDarkElixirLow, True)
+	EndIf
+EndFunc   ;==>chkDBMeetTHLow
 Func chkABWeakBase()
 	If GUICtrlRead($chkABWeakBase) = $GUI_CHECKED Then
 		If _GUICtrlComboBox_GetCurSel($cmbSearchMode) > 0 Then

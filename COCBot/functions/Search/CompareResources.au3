@@ -30,7 +30,7 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 		EndIf
 	EndIf
 
-	Local $G = (Number($searchGold) >= Number($iAimGold[$pMode])), $E = (Number($searchElixir) >= Number($iAimElixir[$pMode])), $D = (Number($searchDark) >= Number($iAimDark[$pMode])), $T = (Number($searchTrophy) >= Number($iAimTrophy[$pMode])), $GPE = ((Number($searchGold) + Number($searchElixir)) >= Number($iAimGoldPlusElixir[$pMode]))
+	Local $G = (Number($searchGold) >= Number($iAimGold[$pMode])), $E = (Number($searchElixir) >= Number($iAimElixir[$pMode])), $D = (Number($searchDark) >= Number($iAimDark[$pMode])), $DX = (Number($searchDark) >= Number($iAimDarkLow[$pMode])), $T = (Number($searchTrophy) >= Number($iAimTrophy[$pMode])), $GPE = ((Number($searchGold) + Number($searchElixir)) >= Number($iAimGoldPlusElixir[$pMode]))
 	Local $THL = -1, $THLO = -1
 
 	For $i = 0 To 5 ;add th11
@@ -68,7 +68,12 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 
 		If $iChkMeetDE[$pMode] = 1 Then
 			If $D = True Then Return True
-		EndIf
+
+		EndIf		
+		
+;		If $iChkMeetTHLow[$pMode] = 1 Then
+;			If $DX = True Then Return True
+;		EndIf
 
 		If $iChkMeetTrophy[$pMode] = 1 Then
 			If $T = True Then Return True
@@ -80,6 +85,11 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 
 		If $iChkMeetTH[$pMode] = 1 Then
 			If $THL <> -1 And $THL <= $iCmbTH[$pMode] Then Return True
+		EndIf
+
+		;Add condition for TH Redux, TH level and DE ($DX) check -n3vermind
+		If $iChkMeetTHLow[$pMode] = 1 Then
+			If $THL <> -1 And $THL <= $iCmbTHLow[$pMode] And $DX = True Then Return True
 		EndIf
 
 		If $iChkMeetTHO[$pMode] = 1 Then
@@ -96,34 +106,46 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 		;			If Not $bIsWeakBase Then Return False
 		;		EndIf
 
+		local $searchFalse = 0
+		local $reduxFalse = 0
+		
 		If $iCmbMeetGE[$pMode] = 0 Then
-			If $G = False Or $E = False Then Return False
+			If $G = False Or $E = False Then $searchFalse += 1
 		EndIf
 
 		If $iChkMeetDE[$pMode] = 1 Then
-			If $D = False Then Return False
+			If $D = False Then $searchFalse += 1
 		EndIf
 
 		If $iChkMeetTrophy[$pMode] = 1 Then
-			If $T = False Then Return False
+			If $T = False Then $searchFalse += 1
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 1 Then
-			If $G = False And $E = False Then Return False
+			If $G = False And $E = False Then $searchFalse += 1
 		EndIf
 
 		If $iChkMeetTH[$pMode] = 1 Then
-			If $THL = -1 Or $THL > $iCmbTH[$pMode] Then Return False
+			If $THL = -1 Or $THL > $iCmbTH[$pMode] Then $searchFalse += 1
 		EndIf
 
 		If $iChkMeetTHO[$pMode] = 1 Then
-			If $THLO <> 1 Then Return False
+			If $THLO <> 1 Then $searchFalse += 1
 		EndIf
 
 		If $iCmbMeetGE[$pMode] = 2 Then
-			If $GPE = False Then Return False
+			If $GPE = False Then $searchFalse += 1
 			;SetLog("[G + E]:" & StringFormat("%7s", $searchGold + $searchElixir), $COLOR_GREEN, "Lucida Console", 7.5)
 		EndIf
+		
+		; Check if requirements for TH Redux are met -n3vermind
+
+		If $iChkMeetTHLow[$pMode] = 1 Then
+			If $THL = -1 Or $THL > $iCmbTHLow[$pMode] Or $DX = False Then $reduxFalse += 1
+		EndIf	
+		
+		if $reduxFalse > 0 And $searchFalse > 0 Then return False
+		
 	EndIf
 
 	Return True

@@ -316,6 +316,7 @@ Global $ScreenshotLootInfo = False
 Global $AlertSearch = True
 Global $iChkAttackNow, $iAttackNowDelay, $bBtnAttackNowPressed = False
 Global $PushToken = ""
+Global $PushToken2 = ""
 Global $hAttackCountDown = 0 ; Timer Handle for 30 Seconds Attack countdown
 
 Global Enum $DB, $LB, $TS, $TB, $DT ; DeadBase, LiveBase, TownhallSnipe, TownhallBully, DropTrophy
@@ -331,10 +332,15 @@ $sModeText[$DT] = "Drop Trophy"
 ;PushBullet---------------------------------------------------------------
 Global $PBRemoteControlInterval = 60000 ; 60 secs
 Global $PBDeleteOldPushesInterval = 1800000 ; 30 mins
+global $access_token2
+Global $first = 0
+global $chat_id2 = 0
+Global $lastremote = 0
 Global $iOrigPushB
 Global $iLastAttack
 Global $iAlertPBVillage
 Global $pEnabled
+Global $pEnabled2
 Global $pRemote
 Global $pMatchFound
 Global $pLastRaidImg
@@ -391,13 +397,13 @@ Global $Is_ClientSyncError = False ;If true means while searching Client Out Of 
 Global $searchGold, $searchElixir, $searchDark, $searchTrophy, $searchTH ;Resources of bases when searching
 Global $SearchGold2 = 0, $SearchElixir2 = 0, $iStuck = 0, $iNext = 0
 Global $iCmbSearchMode
-Global $iMinGold[$iModeCount], $iMinElixir[$iModeCount], $iMinGoldPlusElixir[$iModeCount], $iMinDark[$iModeCount], $iMinTrophy[$iModeCount], $iMaxTH[$iModeCount], $iEnableAfterCount[$iModeCount], $iCmbWeakMortar[$iModeCount], $iCmbWeakWizTower[$iModeCount] ; Minimum Resources conditions
-Global $iAimGold[$iModeCount], $iAimElixir[$iModeCount], $iAimGoldPlusElixir[$iModeCount], $iAimDark[$iModeCount], $iAimTrophy[$iModeCount], $iAimTHtext[$iModeCount] ; Aiming Resource values
+Global $iMinGold[$iModeCount], $iMinElixir[$iModeCount], $iMinGoldPlusElixir[$iModeCount], $iMinDark[$iModeCount], $iMinDarkLow[$iModeCount], $iMinTrophy[$iModeCount], $iMaxTH[$iModeCount], $iEnableAfterCount[$iModeCount], $iCmbWeakMortar[$iModeCount], $iCmbWeakWizTower[$iModeCount] ; Minimum Resources conditions
+Global $iAimGold[$iModeCount], $iAimElixir[$iModeCount], $iAimGoldPlusElixir[$iModeCount], $iAimDark[$iModeCount], $iAimDarkLow[$iModeCount], $iAimTrophy[$iModeCount], $iAimTHtext[$iModeCount] ; Aiming Resource values 
 Global $iChkSearchReduction
 Global $ReduceCount, $ReduceGold, $ReduceElixir, $ReduceGoldPlusElixir, $ReduceDark, $ReduceTrophy ; Reducing values
 ;Global $chkConditions[7], $ichkMeetOne ;Conditions (meet gold...)
 ;Global $icmbTH
-Global $iChkEnableAfter[$iModeCount], $iCmbMeetGE[$iModeCount], $iChkMeetDE[$iModeCount], $iChkMeetTrophy[$iModeCount], $iChkMeetTH[$iModeCount], $iChkMeetTHO[$iModeCount], $iChkMeetOne[$iModeCount], $iCmbTH[$iModeCount], $iChkWeakBase[$iModeCount]
+Global $iChkEnableAfter[$iModeCount], $iCmbMeetGE[$iModeCount], $iChkMeetDE[$iModeCount], $iChkMeetTrophy[$iModeCount], $iChkMeetTH[$iModeCount], $iChkMeetTHLow[$iModeCount], $iChkMeetTHO[$iModeCount], $iChkMeetOne[$iModeCount], $iCmbTH[$iModeCount], $iCmbTHLow[$iModeCount], $iChkWeakBase[$iModeCount]
 Global $chkDBMeetTHO, $chkABMeetTHO, $chkATH
 Global $THLocation
 Global $THx = 0, $THy = 0

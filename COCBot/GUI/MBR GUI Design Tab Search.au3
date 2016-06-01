@@ -137,38 +137,77 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 		$picDBMaxTH10 = GUICtrlCreateIcon($pIconLib, $eIcnTH10, $x + 160, $y - 3, 24, 24)
 			GUICtrlSetTip(-1, $txtTip)
 		$y += 21
-		$chkDBMeetTHO = GUICtrlCreateCheckbox(GetTranslated(2,38, "Townhall Outside"), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,39, "Search for a base that has an exposed Townhall. (Outside of Walls)")
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 21
-		$chkDBWeakBase = GUICtrlCreateCheckbox(GetTranslated(2,40, "WeakBase"), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,41, "Search for a base that has low defences.")
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "chkDBWeakBase")
-		$cmbDBWeakMortar = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			$txtTip = GetTranslated(2,42, "Set the Max. level of the Mortar to search for on a village to attack.")
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7", "Lvl 5")
-			GUICtrlSetState(-1, $GUI_DISABLE)
-		$picDBWeakMortar = GUICtrlCreateIcon($pIconLib, $eIcnMortar, $x + 131, $y - 3, 24, 24)
-			GUICtrlSetTip(-1, $txtTip)
-		$y +=23
-		$cmbDBWeakWizTower = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			$txtTip = GetTranslated(2,43, "Set the Max. level of the Wizard Tower to search for on a village to attack.")
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7|Lvl 8", "Lvl 4")
-			GUICtrlSetState(-1, $GUI_DISABLE)
-		$picDBWeakWizTower = GUICtrlCreateIcon($pIconLib, $eIcnWizTower, $x + 131, $y - 2, 24, 24)
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 21
-		$chkDBMeetOne = GUICtrlCreateCheckbox(GetTranslated(2,44, "Meet One Then Attack"), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,45, "Just meet only ONE of the above conditions, then Attack.")
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 21
-        $btnConfigureCollectors = GUICtrlCreateButton(GetTranslated(2,100, "Configure Collectors..."), $x, $y, 180,20)
-			GUICtrlSetOnEvent(-1, "btnConfigureCollectors")
-	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
+
+
+
+
+		$chkDBMeetTHLow = GUICtrlCreateCheckbox(GetTranslated(2,38, "TH Redux"), $x, $y, -1, -1)
+			$txtTip = GetTranslated(2,39, "Define TH level exception for DE")
+
+			GUICtrlSetOnEvent(-1, "chkDBMeetTHLow")
+
+
+			GUICtrlSetTip(-1, $txtTip)
+
+
+
+			GUICtrlSetState(-1, $GUI_CHECKED)
+		$cmbDBTHLow = GUICtrlCreateCombo("", $x + 80, $y - 1, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			$txtTip = GetTranslated(2,40, "Set the TH level that activates your DE exception")
+			GUICtrlSetTip(-1, $txtTip)
+
+
+
+			GUICtrlSetData(-1, "4-6|7|8|9|10|11", "8")
+		$y += 22	
+		$lblDBEMinDarkLow = GUICtrlCreateLabel(GetTranslated(2,41, "Min. DE"), $x + 30, $y + 5, -1, -1)
+			GUICtrlSetTip(-1, $txtTip)
+
+
+
+					
+		$txtDBMinDarkElixirLow = GUICtrlCreateInput("0", $x + 80, $y, 50, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			$txtTip = GetTranslated(2,42, "Set the Min. amount of Dark Elixir for TH Redux.")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 5)
+			_GUICtrlEdit_SetReadOnly(-1, True)			
+		$y += 21			
+		
+		
+		$chkDBMeetTHO = GUICtrlCreateCheckbox(GetTranslated(2,43, "Townhall Outside"), $x, $y, -1, -1)
+
+			$txtTip = GetTranslated(2,44, "Search for a base that has an exposed Townhall. (Outside of Walls)")
+			GUICtrlSetTip(-1, $txtTip)
+		$y += 21
+		
+;		$chkDBWeakBase = GUICtrlCreateCheckbox(GetTranslated(2,40, "WeakBase"), $x, $y, -1, -1)
+;			$txtTip = GetTranslated(2,41, "Search for a base that has low defences.")
+;			GUICtrlSetTip(-1, $txtTip)
+;			GUICtrlSetOnEvent(-1, "chkDBWeakBase")
+;		$cmbDBWeakMortar = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+;			$txtTip = GetTranslated(2,42, "Set the Max. level of the Mortar to search for on a village to attack.")
+;			GUICtrlSetTip(-1, $txtTip)
+;			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7", "Lvl 5")
+;			GUICtrlSetState(-1, $GUI_DISABLE)
+;		$picDBWeakMortar = GUICtrlCreateIcon($pIconLib, $eIcnMortar, $x + 131, $y - 3, 24, 24)
+;			GUICtrlSetTip(-1, $txtTip)
+;		$y +=23
+;		$cmbDBWeakWizTower = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+;			$txtTip = GetTranslated(2,43, "Set the Max. level of the Wizard Tower to search for on a village to attack.")
+;			GUICtrlSetTip(-1, $txtTip)
+;			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7|Lvl 8", "Lvl 4")
+;			GUICtrlSetState(-1, $GUI_DISABLE)
+;		$picDBWeakWizTower = GUICtrlCreateIcon($pIconLib, $eIcnWizTower, $x + 131, $y - 2, 24, 24)
+;			GUICtrlSetTip(-1, $txtTip)
+;		$y += 21
+;		$chkDBMeetOne = GUICtrlCreateCheckbox(GetTranslated(2,44, "Meet One Then Attack"), $x, $y, -1, -1)
+;			$txtTip = GetTranslated(2,45, "Just meet only ONE of the above conditions, then Attack.")
+;			GUICtrlSetTip(-1, $txtTip)
+;		$y += 21
+;       $btnConfigureCollectors = GUICtrlCreateButton(GetTranslated(2,100, "Configure Collectors..."), $x, $y, 180,20)
+;			GUICtrlSetOnEvent(-1, "btnConfigureCollectors")
+;	GUICtrlCreateGroup("", -99, -99, 1, 1)
 	Local $x = 260, $y = 210
 	$grpLiveBaseConditions = GUICtrlCreateGroup(GetTranslated(2,46,"LiveBase Conditions"), $x - 20, $y - 20, 220, 255)
 		$chkABEnableAfter = GUICtrlCreateCheckbox(GetTranslated(2,15, -1), $x, $y, -1, -1)
@@ -259,37 +298,68 @@ $tabSearch = GUICtrlCreateTabItem(GetTranslated(2,1, "Search"))
 			GUICtrlSetTip(-1, $txtTip)
 		$picABMaxTH10 = GUICtrlCreateIcon($pIconLib, $eIcnTH10, $x + 160, $y - 3, 24, 24)
 			GUICtrlSetTip(-1, $txtTip)
- 		$y += 21
- 		$chkABMeetTHO = GUICtrlCreateCheckbox(GetTranslated(2,38, -1), $x, $y, -1, -1)
- 			$txtTip = GetTranslated(2,39, -1)
+		$y += 22
+		
+		;Add options for TH Redux DE attack -n3vermind
+		$chkABMeetTHLow = GUICtrlCreateCheckbox(GetTranslated(2,38, "TH Redux"), $x, $y, -1, -1)
+			$txtTip = GetTranslated(2,39, "Define TH level exception for DE")
+			GUICtrlSetOnEvent(-1, "chkABMeetTHLow")
+			GUICtrlSetTip(-1, $txtTip)
+
+
+
+			GUICtrlSetState(-1, $GUI_CHECKED)
+		$cmbABTHLow = GUICtrlCreateCombo("", $x + 80, $y - 1, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			$txtTip = GetTranslated(2,40, "Set the TH level that activates your DE exception")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetData(-1, "4-6|7|8|9|10|11", "8")
+		$y += 22	
+
+
+		$lblABEMinDarkLow = GUICtrlCreateLabel(GetTranslated(2,41, "Min. DE"), $x + 30, $y + 5, -1, -1)
+			GUICtrlSetTip(-1, $txtTip)
+
+
+
+		$txtABMinDarkElixirLow = GUICtrlCreateInput("0", $x + 80, $y, 50, 18, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			$txtTip = GetTranslated(2,42, "Set the Min. amount of Dark Elixir for TH Redux.")
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 5)
+			_GUICtrlEdit_SetReadOnly(-1, True)			
+		$y += 21			
+				
+		
+		
+ 		$chkABMeetTHO = GUICtrlCreateCheckbox(GetTranslated(2,43, -1), $x, $y, -1, -1)
+ 			$txtTip = GetTranslated(2,44, -1)
  			GUICtrlSetTip(-1, $txtTip)
 		$y += 21
-		$chkABWeakBase = GUICtrlCreateCheckbox(GetTranslated(2,40, -1), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,41, -1)
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "chkABWeakBase")
-		$cmbABWeakMortar = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			$txtTip = GetTranslated(2,42, -1)
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7", "Lvl 5")
-			GUICtrlSetState(-1, $GUI_DISABLE)
-		$picABWeakMortar = GUICtrlCreateIcon($pIconLib, $eIcnMortar, $x + 131, $y - 3, 24, 24)
-			GUICtrlSetTip(-1, $txtTip)
-		$y +=23
-		$cmbABWeakWizTower = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			$txtTip = GetTranslated(2,43, -1)
-			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7|Lvl 8", "Lvl 4")
-			GUICtrlSetState(-1, $GUI_DISABLE)
-		$picABWeakWizTower = GUICtrlCreateIcon($pIconLib, $eIcnWizTower, $x + 131, $y - 2, 24, 24)
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 21
-		$chkABMeetOne = GUICtrlCreateCheckbox(GetTranslated(2,44, "Meet One Then Attack"), $x, $y, -1, -1)
-			$txtTip = GetTranslated(2,45, -1)
-			GUICtrlSetTip(-1, $txtTip)
-		For $i = $cmbABMeetGE To $chkABMeetOne
-			GUICtrlSetState($i, $GUI_DISABLE)
-		Next
+;		$chkABWeakBase = GUICtrlCreateCheckbox(GetTranslated(2,40, -1), $x, $y, -1, -1)
+;			$txtTip = GetTranslated(2,41, -1)
+;			GUICtrlSetTip(-1, $txtTip)
+;			GUICtrlSetOnEvent(-1, "chkABWeakBase")
+;		$cmbABWeakMortar = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+;			$txtTip = GetTranslated(2,42, -1)
+;			GUICtrlSetTip(-1, $txtTip)
+;			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7", "Lvl 5")
+;			GUICtrlSetState(-1, $GUI_DISABLE)
+;		$picABWeakMortar = GUICtrlCreateIcon($pIconLib, $eIcnMortar, $x + 131, $y - 3, 24, 24)
+;			GUICtrlSetTip(-1, $txtTip)
+;		$y +=23
+;		$cmbABWeakWizTower = GUICtrlCreateCombo("", $x + 80, $y, 50, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+;			$txtTip = GetTranslated(2,43, -1)
+;			GUICtrlSetTip(-1, $txtTip)
+;			GUICtrlSetData(-1, "-|Lvl 1|Lvl 2|Lvl 3|Lvl 4|Lvl 5|Lvl 6|Lvl 7|Lvl 8", "Lvl 4")
+;			GUICtrlSetState(-1, $GUI_DISABLE)
+;		$picABWeakWizTower = GUICtrlCreateIcon($pIconLib, $eIcnWizTower, $x + 131, $y - 2, 24, 24)
+;			GUICtrlSetTip(-1, $txtTip)
+;		$y += 21
+;		$chkABMeetOne = GUICtrlCreateCheckbox(GetTranslated(2,44, "Meet One Then Attack"), $x, $y, -1, -1)
+;			$txtTip = GetTranslated(2,45, -1)
+;			GUICtrlSetTip(-1, $txtTip)
+;		For $i = $cmbABMeetGE To $chkABMeetOne
+;			GUICtrlSetState($i, $GUI_DISABLE)
+;		Next
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 30, $y = 470
