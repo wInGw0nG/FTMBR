@@ -110,6 +110,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkMeetDE[$DB] = IniRead($config, "search", "DBMeetDE", "0")
 		$iChkMeetTrophy[$DB] = IniRead($config, "search", "DBMeetTrophy", "0")
 		$iChkMeetTH[$DB] = IniRead($config, "search", "DBMeetTH", "0")
+		$iChkMeetTHLow[$DB] = IniRead($config, "search", "DBMeetTHLow", "0") ;Enable TH redux? -n3vermind		
 		$iChkMeetTHO[$DB] = IniRead($config, "search", "DBMeetTHO", "0")
 		$iChkWeakBase[$DB] = IniRead($config, "search", "DBWeakBase", "0")
 		$iChkMeetOne[$DB] = IniRead($config, "search", "DBMeetOne", "0")
@@ -121,6 +122,8 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iMinDark[$DB] = IniRead($config, "search", "DBsearchDark", "0")
 		$iMinTrophy[$DB] = IniRead($config, "search", "DBsearchTrophy", "0")
 		$iCmbTH[$DB] = IniRead($config, "search", "DBTHLevel", "0")
+		$iCmbTHLow[$DB] = IniRead($config, "search", "DBTHLevelLow", "0") ;TH redux [TH level] -n3vermind
+		$iMinDarkLow[$DB] = IniRead($config, "search", "DBsearchDarkLow", "0");TH redux [min DE] -n3vermind
 		$iCmbWeakMortar[$DB] = IniRead($config, "search", "DBWeakMortar", "5")
 		$iCmbWeakWizTower[$DB] = IniRead($config, "search", "DBWeakWizTower", "4")
 
@@ -129,6 +132,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkMeetDE[$LB] = IniRead($config, "search", "ABMeetDE", "0")
 		$iChkMeetTrophy[$LB] = IniRead($config, "search", "ABMeetTrophy", "0")
 		$iChkMeetTH[$LB] = IniRead($config, "search", "ABMeetTH", "0")
+		$iChkMeetTHLow[$LB] = IniRead($config, "search", "ABMeetTHLow", "0") ;Enable TH redux? -n3vermind				
 		$iChkMeetTHO[$LB] = IniRead($config, "search", "ABMeetTHO", "0")
 		$iChkWeakBase[$LB] = IniRead($config, "search", "ABWeakBase", "0")
 		$iChkMeetOne[$LB] = IniRead($config, "search", "ABMeetOne", "0")
@@ -140,6 +144,8 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iMinDark[$LB] = IniRead($config, "search", "ABsearchDark", "0")
 		$iMinTrophy[$LB] = IniRead($config, "search", "ABsearchTrophy", "0")
 		$iCmbTH[$LB] = IniRead($config, "search", "ABTHLevel", "0")
+		$iCmbTHLow[$LB] = IniRead($config, "search", "ABTHLevelLow", "0") ;TH redux [TH level] -n3vermind
+		$iMinDarkLow[$LB] = IniRead($config, "search", "ABsearchDarkLow", "0");TH redux [min DE] -n3vermind	
 		$iCmbWeakMortar[$LB] = IniRead($config, "search", "ABWeakMortar", "5")
 		$iCmbWeakWizTower[$LB] = IniRead($config, "search", "ABWeakWizTower", "4")
 
@@ -235,6 +241,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkMeetDE[$TS] = IniRead($config, "search", "TSMeetDE", "0")
 
 		$PushToken = IniRead($config, "advanced", "AccountToken", "")
+		$PushToken2 = IniRead($config, "advanced", "AccountToken2", "")
 
 		$iAlertPBVillage = IniRead($config, "advanced", "AlertPBVillage", "0")
 		$iLastAttack = IniRead($config, "advanced", "AlertPBLastAttack", "0")
@@ -521,6 +528,7 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		;PushBullet Settings ---------------------------------------------
 		$PushToken = IniRead($config, "pushbullet", "AccountToken", "")
+		$PushToken2 = IniRead($config, "pushbullet", "AccountToken2", "")
 		$iOrigPushB = IniRead($config, "pushbullet", "OrigPushB", $sCurrProfile)
 
 		$iAlertPBVillage = IniRead($config, "pushbullet", "AlertPBVillage", "0")
@@ -529,6 +537,7 @@ Func readConfig() ;Reads config and sets it to the variables
 
 
 		$pEnabled = IniRead($config, "pushbullet", "PBEnabled", "0")
+		$pEnabled2 = IniRead($config, "pushbullet", "PBEnabled2", "0")
 		$pRemote = IniRead($config, "pushbullet", "PBRemote", "0")
 		$iDeleteAllPushes = IniRead($config, "pushbullet", "DeleteAllPBPushes", "0")
 		$pMatchFound = IniRead($config, "pushbullet", "AlertPBVMFound", "0")

@@ -110,6 +110,13 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkDBMeetTH, $GUI_UNCHECKED)
 	EndIf
 	chkDBMeetTH()
+	;TH Redux enabled? -n3vermind
+	If $iChkMeetTHLow[$DB] = 1 Then
+		GUICtrlSetState($chkDBMeetTHLow, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDBMeetTHLow, $GUI_UNCHECKED)
+	EndIf
+	chkDBMeetTHLow()	
 
 	If $iChkMeetTHO[$DB] = 1 Then
 		GUICtrlSetState($chkDBMeetTHO, $GUI_CHECKED)
@@ -117,18 +124,18 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkDBMeetTHO, $GUI_UNCHECKED)
 	EndIf
 
-	If $iChkWeakBase[$DB] = 1 Then
-		GUICtrlSetState($chkDBWeakBase, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkDBWeakBase, $GUI_UNCHECKED)
-	EndIf
-	chkDBWeakBase()
+;	If $iChkWeakBase[$DB] = 1 Then
+;		GUICtrlSetState($chkDBWeakBase, $GUI_CHECKED)
+;	Else
+;		GUICtrlSetState($chkDBWeakBase, $GUI_UNCHECKED)
+;	EndIf
+;	chkDBWeakBase()
 
-	If $iChkMeetOne[$DB] = 1 Then
-		GUICtrlSetState($chkDBMeetOne, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkDBMeetOne, $GUI_UNCHECKED)
-	EndIf
+;	If $iChkMeetOne[$DB] = 1 Then
+;		GUICtrlSetState($chkDBMeetOne, $GUI_CHECKED)
+;	Else
+;		GUICtrlSetState($chkDBMeetOne, $GUI_UNCHECKED)
+;	EndIf
 
 	GUICtrlSetData($txtDBEnableAfter, $iEnableAfterCount[$DB])
 	GUICtrlSetData($txtDBMinGold, $iMinGold[$DB])
@@ -136,11 +143,15 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	GUICtrlSetData($txtDBMinGoldPlusElixir, $iMinGoldPlusElixir[$DB])
 	GUICtrlSetData($txtDBMinDarkElixir, $iMinDark[$DB])
 	GUICtrlSetData($txtDBMinTrophy, $iMinTrophy[$DB])
+	;TH Redux minimum DE -n3vermind
+	GUICtrlSetData($txtDBMinDarkElixirLow, $iMinDarkLow[$DB])
 
 	_GUICtrlComboBox_SetCurSel($cmbDBTH, $iCmbTH[$DB])
+	;TH Redux TH level -n3vermind
+	_GUICtrlComboBox_SetCurSel($cmbDBTHLow, $iCmbTHLow[$DB])
 	$iMaxTH[$DB] = $THText[$iCmbTH[$DB]]
-	_GUICtrlComboBox_SetCurSel($cmbDBWeakMortar, $iCmbWeakMortar[$DB])
-	_GUICtrlComboBox_SetCurSel($cmbDBWeakWizTower, $iCmbWeakWizTower[$DB])
+;	_GUICtrlComboBox_SetCurSel($cmbDBWeakMortar, $iCmbWeakMortar[$DB])
+;	_GUICtrlComboBox_SetCurSel($cmbDBWeakWizTower, $iCmbWeakWizTower[$DB])
 
 	If $iChkEnableAfter[$LB] = 1 Then
 		GUICtrlSetState($chkABEnableAfter, $GUI_CHECKED)
@@ -172,6 +183,13 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkABMeetTH, $GUI_UNCHECKED)
 	EndIf
 	chkABMeetTH()
+	;TH Redux enabled? -n3vermind
+	If $iChkMeetTHLow[$LB] = 1 Then
+		GUICtrlSetState($chkABMeetTHLow, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkABMeetTHLow, $GUI_UNCHECKED)
+	EndIf
+	chkABMeetTHLow()	
 
 	If $iChkMeetTHO[$LB] = 1 Then
 		GUICtrlSetState($chkABMeetTHO, $GUI_CHECKED)
@@ -179,18 +197,18 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 		GUICtrlSetState($chkABMeetTHO, $GUI_UNCHECKED)
 	EndIf
 
-	If $iChkWeakBase[$LB] = 1 Then
-		GUICtrlSetState($chkABWeakBase, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkABWeakBase, $GUI_UNCHECKED)
-	EndIf
-	chkABWeakBase()
+;	If $iChkWeakBase[$LB] = 1 Then
+;		GUICtrlSetState($chkABWeakBase, $GUI_CHECKED)
+;	Else
+;		GUICtrlSetState($chkABWeakBase, $GUI_UNCHECKED)
+;	EndIf
+;	chkABWeakBase()
 
-	If $iChkMeetOne[$LB] = 1 Then
-		GUICtrlSetState($chkABMeetOne, $GUI_CHECKED)
-	Else
-		GUICtrlSetState($chkABMeetOne, $GUI_UNCHECKED)
-	EndIf
+;	If $iChkMeetOne[$LB] = 1 Then
+;		GUICtrlSetState($chkABMeetOne, $GUI_CHECKED)
+;	Else
+;		GUICtrlSetState($chkABMeetOne, $GUI_UNCHECKED)
+;	EndIf
 
 	GUICtrlSetData($txtABMinGold, $iMinGold[$LB])
 	GUICtrlSetData($txtABMinElixir, $iMinElixir[$LB])
@@ -199,10 +217,16 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	GUICtrlSetData($txtABMinTrophy, $iMinTrophy[$LB])
 	GUICtrlSetData($txtABEnableAfter, $iEnableAfterCount[$LB])
 
+	;TH Redux minimum DE -n3vermind
+	GUICtrlSetData($txtABMinDarkElixirLow, $iMinDarkLow[$LB])
+
+	;TH Redux TH level -n3vermind
+	_GUICtrlComboBox_SetCurSel($cmbABTHLow, $iCmbTHLow[$LB])	
+	
 	_GUICtrlComboBox_SetCurSel($cmbABTH, $iCmbTH[$LB])
 	$iMaxTH[$LB] = $THText[$iCmbTH[$LB]]
-	_GUICtrlComboBox_SetCurSel($cmbABWeakMortar, $iCmbWeakMortar[$LB])
-	_GUICtrlComboBox_SetCurSel($cmbABWeakWizTower, $iCmbWeakWizTower[$LB])
+;	_GUICtrlComboBox_SetCurSel($cmbABWeakMortar, $iCmbWeakMortar[$LB])
+;	_GUICtrlComboBox_SetCurSel($cmbABWeakWizTower, $iCmbWeakWizTower[$LB])
 
 	If $iChkSearchReduction = 1 Then
 		GUICtrlSetState($chkSearchReduction, $GUI_CHECKED)
@@ -1049,6 +1073,13 @@ Func applyConfig($bRedrawAtExit = True) ;Applies the data from config to the con
 	ElseIf $pEnabled = 0 Then
 		GUICtrlSetState($chkPBenabled, $GUI_UNCHECKED)
 		chkPBenabled()
+ EndIf
+	 	If $pEnabled2 = 1 Then
+		GUICtrlSetState($chkPBenabled2, $GUI_CHECKED)
+		chkPBenabled2()
+	ElseIf $pEnabled2 = 0 Then
+		GUICtrlSetState($chkPBenabled2, $GUI_UNCHECKED)
+		chkPBenabled2()
 	EndIf
 
 	If $pRemote = 1 Then

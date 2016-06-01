@@ -53,6 +53,8 @@ Global Const $bottomOffsetY = $DEFAULT_HEIGHT - 720
 Global $bMonitorHeight800orBelow = False
 
 ;debugging
+Global $chkDBMeetOne
+Global $chkABMeetOne
 Global $debugSearchArea = 0, $debugOcr = 0, $debugRedArea = 0, $debugSetlog = 0, $debugDeadBaseImage = 0, $debugImageSave = 0, $debugWalls = 0, $debugBuildingPos = 0, $debugVillageSearchImages = 0
 Global $debugAttackCSV = 0, $makeIMGCSV = 0 ;attackcsv debug
 

@@ -100,23 +100,30 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "search", "DBMeetTH", 0)
 	EndIf
 
+	;TH Redux checked? -n3vermind
+	If GUICtrlRead($chkDBMeetTHLow) = $GUI_CHECKED Then
+		IniWrite($config, "search", "DBMeetTHLow", 1)
+	Else
+		IniWrite($config, "search", "DBMeetTHLow", 0)
+	EndIf	
+	
 	If GUICtrlRead($chkDBMeetTHO) = $GUI_CHECKED Then
 		IniWrite($config, "search", "DBMeetTHO", 1)
 	Else
 		IniWrite($config, "search", "DBMeetTHO", 0)
 	EndIf
 
-	If GUICtrlRead($chkDBWeakBase) = $GUI_CHECKED Then
-		IniWrite($config, "search", "DBWeakBase", 1)
-	Else
-		IniWrite($config, "search", "DBWeakBase", 0)
-	EndIf
+;	If GUICtrlRead($chkDBWeakBase) = $GUI_CHECKED Then
+;		IniWrite($config, "search", "DBWeakBase", 1)
+;	Else
+;		IniWrite($config, "search", "DBWeakBase", 0)
+;	EndIf
 
-	If GUICtrlRead($chkDBMeetOne) = $GUI_CHECKED Then
-		IniWrite($config, "search", "DBMeetOne", 1)
-	Else
-		IniWrite($config, "search", "DBMeetOne", 0)
-	EndIf
+;	If GUICtrlRead($chkDBMeetOne) = $GUI_CHECKED Then
+;		IniWrite($config, "search", "DBMeetOne", 1)
+;	Else
+;		IniWrite($config, "search", "DBMeetOne", 0)
+;	EndIf
 
 	IniWrite($config, "search", "DBEnableAfterCount", GUICtrlRead($txtDBEnableAfter))
 	IniWrite($config, "search", "DBsearchGold", GUICtrlRead($txtDBMinGold))
@@ -125,8 +132,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "search", "DBsearchDark", GUICtrlRead($txtDBMinDarkElixir))
 	IniWrite($config, "search", "DBsearchTrophy", GUICtrlRead($txtDBMinTrophy))
 	IniWrite($config, "search", "DBTHLevel", _GUICtrlComboBox_GetCurSel($cmbDBTH))
-	IniWrite($config, "search", "DBWeakMortar", _GUICtrlComboBox_GetCurSel($cmbDBWeakMortar))
-	IniWrite($config, "search", "DBWeakWizTower", _GUICtrlComboBox_GetCurSel($cmbDBWeakWizTower))
+	;TH Redux TH level and DE min. -n3vermind	
+	IniWrite($config, "search", "DBTHLevelLow", _GUICtrlComboBox_GetCurSel($cmbDBTHLow))
+	IniWrite($config, "search", "DBsearchDarkLow", GUICtrlRead($txtDBMinDarkElixirLow))
+;	IniWrite($config, "search", "DBWeakMortar", _GUICtrlComboBox_GetCurSel($cmbDBWeakMortar))
+;	IniWrite($config, "search", "DBWeakWizTower", _GUICtrlComboBox_GetCurSel($cmbDBWeakWizTower))
 
 	;any base
 	If GUICtrlRead($chkABEnableAfter) = $GUI_CHECKED Then
@@ -155,23 +165,30 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "search", "ABMeetTH", 0)
 	EndIf
 
+	;TH Redux checked? -n3vermind
+	If GUICtrlRead($chkABMeetTHLow) = $GUI_CHECKED Then
+		IniWrite($config, "search", "ABMeetTHLow", 1)
+	Else
+		IniWrite($config, "search", "ABMeetTHLow", 0)
+	EndIf	
+	
 	If GUICtrlRead($chkABMeetTHO) = $GUI_CHECKED Then
 		IniWrite($config, "search", "ABMeetTHO", 1)
 	Else
 		IniWrite($config, "search", "ABMeetTHO", 0)
 	EndIf
 
-	If GUICtrlRead($chkABWeakBase) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABWeakBase", 1)
-	Else
-		IniWrite($config, "search", "ABWeakBase", 0)
-	EndIf
+;	If GUICtrlRead($chkABWeakBase) = $GUI_CHECKED Then
+;		IniWrite($config, "search", "ABWeakBase", 1)
+;	Else
+;		IniWrite($config, "search", "ABWeakBase", 0)
+;	EndIf
 
-	If GUICtrlRead($chkABMeetOne) = $GUI_CHECKED Then
-		IniWrite($config, "search", "ABMeetOne", 1)
-	Else
-		IniWrite($config, "search", "ABMeetOne", 0)
-	EndIf
+;	If GUICtrlRead($chkABMeetOne) = $GUI_CHECKED Then
+;		IniWrite($config, "search", "ABMeetOne", 1)
+;	Else
+;		IniWrite($config, "search", "ABMeetOne", 0)
+;	EndIf
 
 	IniWrite($config, "search", "ABEnableAfterCount", GUICtrlRead($txtABEnableAfter))
 	IniWrite($config, "search", "ABsearchGold", GUICtrlRead($txtABMinGold))
@@ -180,8 +197,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "search", "ABsearchDark", GUICtrlRead($txtABMinDarkElixir))
 	IniWrite($config, "search", "ABsearchTrophy", GUICtrlRead($txtABMinTrophy))
 	IniWrite($config, "search", "ABTHLevel", _GUICtrlComboBox_GetCurSel($cmbABTH))
-	IniWrite($config, "search", "ABWeakMortar", _GUICtrlComboBox_GetCurSel($cmbABWeakMortar))
-	IniWrite($config, "search", "ABWeakWizTower", _GUICtrlComboBox_GetCurSel($cmbABWeakWizTower))
+	;TH Redux TH level and DE min. -n3vermind
+	IniWrite($config, "search", "ABTHLevelLow", _GUICtrlComboBox_GetCurSel($cmbABTHLow))
+	IniWrite($config, "search", "ABsearchDarkLow", GUICtrlRead($txtABMinDarkElixirLow))	
+;	IniWrite($config, "search", "ABWeakMortar", _GUICtrlComboBox_GetCurSel($cmbABWeakMortar))
+;	IniWrite($config, "search", "ABWeakWizTower", _GUICtrlComboBox_GetCurSel($cmbABWeakWizTower))
 
 	If GUICtrlRead($chkSearchReduction) = $GUI_CHECKED Then
 		IniWrite($config, "search", "reduction", 1)
@@ -1105,6 +1125,7 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	;PushBullet Settings----------------------------------------
 	IniWrite($config, "pushbullet", "AccountToken", GUICtrlRead($PushBTokenValue))
+	IniWrite($config, "pushbullet", "AccountToken2", GUICtrlRead($PushBTokenValue2))	
 	IniWrite($config, "pushbullet", "OrigPushB", $sCurrProfile)
 
 	If GUICtrlRead($chkAlertPBVillage) = $GUI_CHECKED Then
