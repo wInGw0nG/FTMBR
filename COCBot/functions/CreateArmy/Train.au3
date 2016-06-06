@@ -599,7 +599,7 @@ Func Train()
 				$icount = 0
 				While Not _ColorCheck(_GetPixelColor(593, 200 + $midOffsetY, True), Hex(0xD0D0C0, 6), 20) ; while not disappears  green arrow
 					If Not (IsTrainPage()) Then Return ;exit if no train page
-					Click(568, 177 + $midOffsetY, 10, 0, "#0284") ; Remove Troops in training
+					If Not ($iChkDeploySettings[$LB] = 6) Then Click(568, 177 + $midOffsetY, 10, 0, "#0284") ; Remove Troops in training (Also not when Milking...)
 					$icount += 1
 					If $icount = 100 Then ExitLoop
 				WEnd
