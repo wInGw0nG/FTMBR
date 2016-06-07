@@ -1,0 +1,4 @@
+TROOP |S1|S2|Q1|Q2|DEL1 |DEL2 |LOG_TEXT                                    |NOTES
+Text  |  |  |  |  |     |     |Attacking with 10 archers and waiting       |
+Arch  | 2| 2| 5| 5|    0|    0|                                            |deploys 10 archers
+Text  |  |  |  |  |     |     |~Finished Attacking, waiting to finish      |
